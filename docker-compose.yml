@@ -1,0 +1,6 @@
+services:
+  lena.webappcase:
+    image: ${DOCKER_REGISTRY-}lenawebappcase
+    build:
+      context: .
+      dockerfile: LENA.WebAppCase/Dockerfile
