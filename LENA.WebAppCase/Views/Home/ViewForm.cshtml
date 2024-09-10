@@ -16,8 +16,8 @@
                         {
                             <div class="form-element-wrapper">
                                 <div class="form-group d-flex align-items-center p-1">
-                                     <label>@(field.name)</label>
-                                    <input type="text" class="form-control" placeholder="@(field.name)" disabled>
+                                    <label for="@(field.name)">@(field.name)</label>
+                                    <input id="@(field.name) " type="text" class="form-control" placeholder="@(field.name)" >
                                 </div>
                             </div>
                             break;
@@ -26,8 +26,8 @@
                         {
                             <div class="form-element-wrapper">
                                 <div class="form-group d-flex align-items-center p-1">
-                                    <label>@(field.name)</label>
-                                    <input type="number" class="form-control" disabled>
+                                    <label for="@(field.name)">@(field.name)</label>
+                                    <input id="@(field.name) " type="number" class="form-control" >
                                 </div>
                             </div>
                             break;
@@ -35,8 +35,8 @@
                     case "bool":
                         {
                             <div class="form-check form-check-inline">
-                                <label class="form-check-label">@(field.name)</label>
-                                <input type="checkbox" class="form-check-input">
+                                <label  for="@(field.name)" class="form-check-label">@(field.name)</label>
+                                <input  id="@(field.name) " type="checkbox" class="form-check-input">
                             </div>
                             break;
                         }
@@ -44,8 +44,8 @@
                         {
                             <div class="form-element-wrapper">
                                 <div class="form-group d-flex align-items-center p-1">
-                                    <label>@(field.name)</label>
-                                    <input type="datetime" class="form-control"disabled>
+                                    <label  for="@(field.name)">@(field.name)</label>
+                                    <input  id="@(field.name) " type="date" class="form-control">
                                 </div>
                             </div>
                             break;
