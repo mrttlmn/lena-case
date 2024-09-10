@@ -3,9 +3,12 @@
     "Docker Compose": {
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
+      "composeLaunchAction": "LaunchBrowser",
+      "composeLaunchServiceName": "development.webappcase",
+      "composeLaunchUrl": "{Scheme}://localhost:{ServicePort}",
       "serviceActions": {
-        "lena.mvcwebappcase": "StartDebugging",
-        "lena.webappcase": "StartDebugging"
+        "development.webappcase": "StartDebugging",
+        "development.mssql": "StartWithoutDebugging"
       }
     }
   }

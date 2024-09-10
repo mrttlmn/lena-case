@@ -1,8 +1,59 @@
-﻿@{
+﻿@using LENA.WebAppCase.Core.Model
+@{
     ViewData["Title"] = "Home Page";
 }
+@model IEnumerable<Form>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<div class="container">
+    <div class="row">
+        <button type="button" id="form-builder" class="btn btn-primary">Form Oluştur</button>
+    </div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-4">
+                <div class="card">
+                    <h5 class="card-header">@item.name</h5>
+                    <div class="card-body">
+                        <h5 class="card-title">Oluşturulma Tarihi : @(item.createdAt.ToString("D"))</h5>
+                        <p class="card-text">Wkontent</p>
+                        <a href="/form/@(item.id)"  class="btn btn-primary">Formu Gör</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Form Oluştur</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="modalForm" asp-action="SubmitForm" method="post">
+                    <div class="form-element-wrapper">
+                        <div class="form-group d-flex align-items-center p-1">
+                            <input type="text" class="form-control" name="formName" placeholder="Form İsmi" required>
+                        </div>
+                    </div>
+                    <div class="form-element-wrapper">
+                        <div class="form-group d-flex align-items-center p-1">
+                            <input type="text" class="form-control" name="formDescription" placeholder="Form Açıklaması" required>
+                        </div>
+                    </div>
+                    <hr />
+                </form>
+                <button id="addParamButton" class="btn btn-success mt-3">+ Yeni Parametre</button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="myModal">Close</button>
+                <button type="submit" class="btn btn-primary" form="modalForm">Submit</button>
+            </div>
+        </div>
+    </div>
 </div>

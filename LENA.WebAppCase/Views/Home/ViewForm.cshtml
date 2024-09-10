@@ -1,0 +1,58 @@
+﻿@using LENA.WebAppCase.Core.Model
+@{
+    ViewData["Title"] = "Form Page";
+}
+@model Form
+<div class="container">
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-6">
+            <h5>@(Model.name)</h5>
+            <p>@(Model.description)</p>
+            @foreach (var field in Model.fields)
+            {
+                switch (field.dataType)
+                {
+                    case "string":
+                        {
+                            <div class="form-element-wrapper">
+                                <div class="form-group d-flex align-items-center p-1">
+                                     <label>@(field.name)</label>
+                                    <input type="text" class="form-control" placeholder="@(field.name)" disabled>
+                                </div>
+                            </div>
+                            break;
+                        }
+                    case "int":
+                        {
+                            <div class="form-element-wrapper">
+                                <div class="form-group d-flex align-items-center p-1">
+                                    <label>@(field.name)</label>
+                                    <input type="number" class="form-control" disabled>
+                                </div>
+                            </div>
+                            break;
+                        }
+                    case "bool":
+                        {
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label">@(field.name)</label>
+                                <input type="checkbox" class="form-check-input">
+                            </div>
+                            break;
+                        }
+                    case "date":
+                        {
+                            <div class="form-element-wrapper">
+                                <div class="form-group d-flex align-items-center p-1">
+                                    <label>@(field.name)</label>
+                                    <input type="datetime" class="form-control"disabled>
+                                </div>
+                            </div>
+                            break;
+                        }
+                }
+               
+            }
+        </div>
+    </div>
+</div>

@@ -1,6 +1,12 @@
 services:
-  lena.webappcase:
+  development.webappcase:
     image: ${DOCKER_REGISTRY-}lenawebappcase
+    ports: 
+      - 80:80
     build:
       context: .
       dockerfile: LENA.WebAppCase/Dockerfile
+    depends_on:
+      - "development.mssql"
+    environment:
+    - ConnectionString=Data Source=development.mssql;Database=LenaDb;User Id=sa;Password=devPassw0rd!;TrustServerCertificate=True;
