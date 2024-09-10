@@ -6,7 +6,6 @@ using LENA.WebAppCase.Core.UnitOfWork;
 using LENA.WebAppCase.Repository.Repository;
 using LENA.WebAppCase.Repository.UnitOfWork;
 using LENA.WebAppCase.Service.Service;
-using Microsoft.AspNetCore.Components.Forms;
 
 namespace LENA.WebAppCase.Modules
 {
@@ -20,7 +19,7 @@ namespace LENA.WebAppCase.Modules
         }
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterGeneric(typeof(GenericRepository<>)).As(typeof(IGenericDBRepository<>)).InstancePerLifetimeScope();
+            builder.RegisterGeneric(typeof(GenericRepository<>)).As(typeof(IGenericRepository<>)).InstancePerLifetimeScope();
             builder.RegisterGeneric(typeof(GenericService<>)).As(typeof(IGenericService<>)).InstancePerLifetimeScope();
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
 

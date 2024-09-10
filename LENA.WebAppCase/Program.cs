@@ -8,6 +8,14 @@ using System;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<AppIdentityContext>();
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<ContainerBuilder>(cb => cb.RegisterModule(new DIContainerModule()));
+
+builder.Services.AddRazorPages();
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration["ConnectionString"]);
@@ -18,11 +26,6 @@ builder.Services.AddDbContext<AppIdentityContext>(options =>
 });
 
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<AppIdentityContext>();
-builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
-builder.Host.ConfigureContainer<ContainerBuilder>(cb => cb.RegisterModule(new DIContainerModule()));
-
-builder.Services.AddRazorPages();
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
